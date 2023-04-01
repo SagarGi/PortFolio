@@ -1,11 +1,13 @@
 <template>
   <div class="app" :class="modeType">
     <HeaderComponent :modeType="modeType" @changeThemeMode="changeThemeMode"/>
+    <ContentComponent :modeType="modeType"/>
   </div>
 </template>
 
 <script>
 import HeaderComponent from "./components/HeaderComponent.vue";
+import ContentComponent from "./components/ContentComponent.vue"
 export default {
   name: "HomePage",
   data() {
@@ -14,7 +16,8 @@ export default {
     }
   },
   components: {
-    HeaderComponent
+    HeaderComponent,
+    ContentComponent
   },
   methods: {
     changeThemeMode() {
