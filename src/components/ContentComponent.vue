@@ -1,22 +1,31 @@
 <template>
-  <div class="content">
-    <div class="my-information">
-      <div class="heading">
-        <h2>Hello World !!</h2>
-        <img v-if="modeType === 'light'" class="hand-wave" src="./assets/images/wave-black.png" alt="wave-hand">
-        <img v-else class="hand-wave" src="./assets/images/wve-white.png" alt="wave-hand">
-      </div>
-      <div class="information" :class="modeType">
-        <p>I am sagar gurung,</p>
-        <p>programmer | test automation engineer</p>
-        <div class="heading-with-image">
-          <p>working from</p>
-          <img src="./assets/images/nepal.png" alt="nepal">
-          <img src="./assets/images/baoudha.png" alt="boudha">
+  <div class="main-body">
+    <div class="content">
+      <div class="my-information">
+        <div class="heading">
+          <h2>Hello World !!</h2>
+          <img v-if="modeType === 'light'" class="hand-wave" src="./assets/images/wave-black.png" alt="wave-hand">
+          <img v-else class="hand-wave" src="./assets/images/wve-white.png" alt="wave-hand">
+        </div>
+        <div class="information" :class="modeType">
+          <p>I am sagar gurung,</p>
+          <p>programmer | test automation engineer</p>
+          <div class="heading-with-image">
+            <p>working from</p>
+            <img src="./assets/images/nepal.png" alt="nepal">
+            <img src="./assets/images/baoudha.png" alt="boudha">
+          </div>
         </div>
       </div>
+      <div class="robot-image">
+        <img class="robot" src="./assets/images/robot.gif" alt="robot-head">
+      </div>
     </div>
-    <div class="robot-image">
+    <div class="thumps-up">
+      <p>1099</p>
+      <span class="give-like"><i class="fas fa-thumbs-up"></i></span>
+<!--      <img v-if="modeType === 'light'" src="./assets/images/like-black.png" alt="thumps-up">-->
+<!--      <img v-else src="./assets/images/like-white.png" alt="thumps-up">-->
     </div>
   </div>
 </template>
@@ -28,11 +37,13 @@
 </script>
 <style scoped>
 .content{
+  margin: 10px auto;
+    padding-top: 20px;
+  width: 60%;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   height: 40vh;
-  margin-top: 15px;
 }
 
 .heading {
@@ -64,6 +75,18 @@
   padding-top: 5px;
 }
 
+.robot-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 100px;
+}
+
+.robot {
+    width: 250px;
+    height: 225px;
+}
+
 .hand-wave {
   width: 45px;
   height: 40px;
@@ -72,6 +95,38 @@
   animation-iteration-count: infinite;
   transform-origin: 70% 70%;
   display: inline-block;
+}
+
+.thumps-up {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    height: 10vh;
+}
+
+.thumps-up, img:hover {
+    cursor: pointer;
+}
+
+.give-like {
+    height: 50px;
+    width: 50px;
+    background-color: #FF4539;
+    border-radius: 35px;
+    text-align: center;
+    line-height: 45px;
+    color: white;
+    font-size: 18px;
+    margin-left: 10px;
+}
+span i {
+    transition: all 0.3s linear;
+}
+
+span:hover i {
+    transform: scale(1.5);
 }
 
 @keyframes wave-animation {
