@@ -15,7 +15,7 @@
     props: ['modeType'],
     data() {
       return {
-        namePrefix: "<Sagar",
+        namePrefix: "<Lambu",
         nameSuffix: "Gi />"
       }
     }
