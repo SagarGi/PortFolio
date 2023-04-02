@@ -2,13 +2,13 @@
   <div class="footer" :class="modeType">
     <div class="footer-wrapper">
       <div class="follow-links">
-        <a href="#"  title="facebook">
+        <a href="https://github.com/SagarGi" target="_blank">
           <i class="fa fa-github" aria-hidden="true"></i>
         </a>
-        <a href="#"  title="dev-to">
+        <a href="https://dev.to/sagargi"  title="dev-to" target="_blank" >
           <i class="fab fa-dev" aria-hidden="true"></i>
         </a>
-        <a href="#" title="linkedin">
+        <a href="https://www.linkedin.com/in/sagar-gurung-99450619b/" title="linkedin" target="_blank">
           <i class="fa fa-linkedin" aria-hidden="true"></i>
         </a>
       </div>
