@@ -145,7 +145,7 @@
 .follow-down {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: end;
     height: 10vh;
 }
 
