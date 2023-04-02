@@ -25,10 +25,12 @@
 <style>
 
 header {
+  margin: 0 auto;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
   height: 15vh;
+  width: 85%;
 }
 
 nav {

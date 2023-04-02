@@ -43,7 +43,7 @@ export default {
 
 .dark {
   background: #000;
-  color: #fff;
+  color: #ffffff;
 }
 
 </style>

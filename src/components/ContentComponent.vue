@@ -1,5 +1,5 @@
 <template>
-  <div class="main-body">
+  <div class="main-body" :class="modeType">
     <div class="content">
       <div class="my-information">
         <div class="heading">
@@ -7,7 +7,7 @@
           <img v-if="modeType === 'light'" class="hand-wave" src="./assets/images/wave-black.png" alt="wave-hand">
           <img v-else class="hand-wave" src="./assets/images/wve-white.png" alt="wave-hand">
         </div>
-        <div class="information" :class="modeType">
+        <div class="information">
           <p>I am sagar gurung,</p>
           <p>programmer | test automation engineer</p>
           <div class="heading-with-image">
@@ -24,8 +24,9 @@
     <div class="thumps-up">
       <p>1099</p>
       <span class="give-like"><i class="fas fa-thumbs-up"></i></span>
-<!--      <img v-if="modeType === 'light'" src="./assets/images/like-black.png" alt="thumps-up">-->
-<!--      <img v-else src="./assets/images/like-white.png" alt="thumps-up">-->
+    </div>
+    <div class="follow-down">
+      <span class="follow-down-icon"><i class="fas fa-angle-double-down"></i></span>
     </div>
   </div>
 </template>
@@ -37,13 +38,14 @@
 </script>
 <style scoped>
 .content{
-  margin: 10px auto;
-    padding-top: 20px;
+  margin: 0 auto;
+  padding-top: 20px;
   width: 60%;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
   height: 40vh;
+  column-gap: 60px;
 }
 
 .heading {
@@ -104,6 +106,7 @@
     align-items: center;
     width: 80%;
     height: 10vh;
+    column-gap: 10px;
 }
 
 .thumps-up, img:hover {
@@ -119,14 +122,41 @@
     line-height: 45px;
     color: white;
     font-size: 18px;
-    margin-left: 10px;
 }
-span i {
+.give-like i {
     transition: all 0.3s linear;
 }
 
-span:hover i {
+.give-like:hover i {
     transform: scale(1.5);
+}
+
+.follow-down {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;
+}
+
+.follow-down i {
+    font-size: 20px;
+    animation: jumpInfinite 1.5s infinite;
+}
+
+.dark p {
+    color: white;
+}
+
+@keyframes jumpInfinite {
+    0% {
+        margin-top: 0;
+    }
+    50% {
+        margin-top: 20px;
+    }
+    100% {
+        margin-top: 0;
+    }
 }
 
 @keyframes wave-animation {
