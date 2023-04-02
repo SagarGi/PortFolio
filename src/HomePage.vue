@@ -2,12 +2,14 @@
   <div class="app" :class="modeType">
     <HeaderComponent :modeType="modeType" @changeThemeMode="changeThemeMode"/>
     <ContentComponent :modeType="modeType"/>
+    <FooterComponent :modeType="modeType"/>
   </div>
 </template>
 
 <script>
 import HeaderComponent from "./components/HeaderComponent.vue";
 import ContentComponent from "./components/ContentComponent.vue"
+import FooterComponent from "./components/FooterComponent.vue"
 export default {
   name: "HomePage",
   data() {
@@ -17,7 +19,8 @@ export default {
   },
   components: {
     HeaderComponent,
-    ContentComponent
+    ContentComponent,
+    FooterComponent
   },
   methods: {
     changeThemeMode() {

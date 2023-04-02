@@ -1,32 +1,34 @@
 <template>
   <div class="main-body" :class="modeType">
-    <div class="content">
-      <div class="my-information">
-        <div class="heading">
-          <h2>Hello World !!</h2>
-          <img v-if="modeType === 'light'" class="hand-wave" src="./assets/images/wave-black.png" alt="wave-hand">
-          <img v-else class="hand-wave" src="./assets/images/wve-white.png" alt="wave-hand">
-        </div>
-        <div class="information">
-          <p>I am sagar gurung,</p>
-          <p>programmer | test automation engineer</p>
-          <div class="heading-with-image">
-            <p>working from</p>
-            <img src="./assets/images/nepal.png" alt="nepal">
-            <img src="./assets/images/baoudha.png" alt="boudha">
+    <div class="main-body-wrapper">
+      <div class="content">
+        <div class="my-information">
+          <div class="heading">
+            <h2>Hello World !!</h2>
+            <img v-if="modeType === 'light'" class="hand-wave" src="./assets/images/wave-black.png" alt="wave-hand">
+            <img v-else class="hand-wave" src="./assets/images/wve-white.png" alt="wave-hand">
+          </div>
+          <div class="information">
+            <p>I am sagar gurung,</p>
+            <p>programmer | test automation engineer</p>
+            <div class="heading-with-image">
+              <p>working from</p>
+              <img src="./assets/images/nepal.png" alt="nepal">
+              <img src="./assets/images/baoudha.png" alt="boudha">
+            </div>
           </div>
         </div>
+        <div class="robot-image">
+          <img class="robot" src="./assets/images/robot.gif" alt="robot-head">
+        </div>
       </div>
-      <div class="robot-image">
-        <img class="robot" src="./assets/images/robot.gif" alt="robot-head">
+      <div class="thumps-up">
+        <p>1099</p>
+        <span class="give-like"><i class="fas fa-thumbs-up"></i></span>
       </div>
-    </div>
-    <div class="thumps-up">
-      <p>1099</p>
-      <span class="give-like"><i class="fas fa-thumbs-up"></i></span>
-    </div>
-    <div class="follow-down">
-      <span class="follow-down-icon"><i class="fas fa-angle-double-down"></i></span>
+      <div class="follow-down">
+        <span class="follow-down-icon"><i class="fas fa-angle-double-down"></i></span>
+      </div>
     </div>
   </div>
 </template>
@@ -37,15 +39,23 @@
  }
 </script>
 <style scoped>
+
+.main-body {
+    height: 65vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-body-wrapper {
+    width: 100%;
+}
 .content{
-  margin: 0 auto;
-  padding-top: 20px;
-  width: 60%;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 40vh;
   column-gap: 60px;
+  height: 45vh;
 }
 
 .heading {
@@ -81,12 +91,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 100px;
+    padding-bottom: 70px;
 }
 
 .robot {
     width: 250px;
-    height: 225px;
 }
 
 .hand-wave {
@@ -104,9 +113,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 80%;
-    height: 10vh;
+    width: 100%;
     column-gap: 10px;
+    height: 10vh;
 }
 
 .thumps-up, img:hover {
@@ -139,24 +148,20 @@
 }
 
 .follow-down i {
-    font-size: 20px;
-    animation: jumpInfinite 1.5s infinite;
+    font-size: 15px;
+}
+
+.follow-down-icon {
+    display: inline-block;
+    position: relative;
+    -moz-animation: bounce 0.5s infinite linear;
+    -o-animation: bounce 0.5s infinite linear;
+    -webkit-animation: bounce 0.5s infinite linear;
+    animation: bounce 0.5s infinite linear;
 }
 
 .dark p {
     color: white;
-}
-
-@keyframes jumpInfinite {
-    0% {
-        margin-top: 0;
-    }
-    50% {
-        margin-top: 20px;
-    }
-    100% {
-        margin-top: 0;
-    }
 }
 
 @keyframes wave-animation {
@@ -168,5 +173,36 @@
   50% { transform: rotate(10.0deg) }
   60% { transform: rotate( 0.0deg) }
   100% { transform: rotate( 0.0deg) }
+}
+
+@-webkit-keyframes bounce {
+    0% { top: 0; }
+    50% { top: -0.2em; }
+    70% { top: -0.3em; }
+    100% { top: 0; }
+}
+@-moz-keyframes bounce {
+    0% { top: 0; }
+    50% { top: -0.2em; }
+    70% { top: -0.3em; }
+    100% { top: 0; }
+}
+@-o-keyframes bounce {
+    0% { top: 0; }
+    50% { top: -0.2em; }
+    70% { top: -0.3em; }
+    100% { top: 0; }
+}
+@-ms-keyframes bounce {
+    0% { top: 0; }
+    50% { top: -0.2em; }
+    70% { top: -0.3em; }
+    100% { top: 0; }
+}
+@keyframes bounce {
+    0% { top: 0; }
+    50% { top: -0.2em; }
+    70% { top: -0.3em; }
+    100% { top: 0; }
 }
 </style>
