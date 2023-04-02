@@ -49,4 +49,11 @@ export default {
   color: #ffffff;
 }
 
+/* Responsive layout - makes a one column-layout instead of two-column layout */
+@media (max-width: 800px) {
+    .app {
+        height: auto;
+    }
+}
+
 </style>

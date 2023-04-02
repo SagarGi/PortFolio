@@ -51,11 +51,13 @@
     width: 100%;
 }
 .content{
+    margin: auto;
   display: flex;
   justify-content: center;
   align-items: center;
   column-gap: 60px;
-  height: 45vh;
+    flex-wrap: wrap;
+  height: auto;
 }
 
 .heading {
@@ -162,6 +164,13 @@
 
 .dark p {
     color: white;
+}
+
+/* Responsive layout - makes a one column-layout instead of two-column layout */
+@media (max-width: 800px) {
+    .main-body {
+        height: auto;
+    }
 }
 
 @keyframes wave-animation {
