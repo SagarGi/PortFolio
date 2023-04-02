@@ -3,16 +3,16 @@
 # abort on errors
 set -e
 
-sudo rm -rf dist
-
 # build
 npm run build
 
-# if you are deploying to a custom domain
-# echo 'www.example.com' > CNAME
+# navigate into the build output directory
+cd dist
 
 git init
 git add -A
 git commit -m 'deploy'
+git branch -M main
+git push -f git@github.com:SagarGi/Portfolio.git main:gh-pages
 
-git subtree push --prefix dist origin gh-pages
+cd -
