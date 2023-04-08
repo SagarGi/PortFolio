@@ -10,8 +10,8 @@ npm run build
 cd dist
 
 git init
-git add -A
-git commit -m 'deploy'
+git add .
+git -c user.name="SagarGi" -c user.email="sagargurung1001@gmail.com" commit -m "Update the build code"
 git branch -M main
 git push -f git@github.com:SagarGi/Portfolio.git main:gh-pages
 
