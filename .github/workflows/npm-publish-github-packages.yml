@@ -1,4 +1,4 @@
-name: Deploy CI
+name: Deploy with CI
 
 on:
   push:
@@ -20,8 +20,16 @@ jobs:
     
     - name: Install dependencies
       run: npm ci
+
+    - name: Build dist
+      run: |
+        npm run clean
+        npm run dev
       
-    - name: Publish
-      run: bash -x ./deploy.sh
+    - name: Deploy to GH Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+       github_token: ${{ secrets.PORTFOLIO_SECRET }}
+       publish_dir: dist
       
       
