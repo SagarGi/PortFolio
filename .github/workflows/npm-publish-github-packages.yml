@@ -2,9 +2,9 @@ name: Deploy with CI
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
   pull_request:
-    branches: [ main ]
 
 jobs:
   build:
@@ -25,7 +25,7 @@ jobs:
       run: npm run build
 
     - name: Deploy to GH Pages
-      if: ${{ success() && github.event_name == 'push' && github.ref == 'refs/heads/master' }}
+      if: ${{ success() && github.event_name == 'push' && github.ref == 'refs/heads/main' }}
       uses: crazy-max/ghaction-github-pages@v3
       with:
         target_branch: deploy
