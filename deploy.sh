@@ -1,18 +1,35 @@
-#!/usr/bin/env sh
+name: build and deploy
 
-# abort on errors
-set -e
+on:
+  push:
+    branches:
+      - master
+  pull_request:
 
-# build
-npm run build
+jobs:
+  build-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
 
-# navigate into the build output directory
-cd dist
+      - name: setup-node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 14
+          cache: yarn
 
-git init
-git add .
-git -c user.name="SagarGi" -c user.email="sagargurung1001@gmail.com" commit -m "Update the build code"
-git branch -M main
-git push -f git@github.com:SagarGi/Portfolio.git main:gh-pages
+      - name: yarn-install
+        run: yarn install --immutable
 
-cd -
+      - name: build
+        run: yarn build
+
+      - name: deploy
+        if: ${{ success() && github.event_name == 'push' && github.ref == 'refs/heads/master' }}
+        uses: crazy-max/ghaction-github-pages@v3
+        with:
+          target_branch: deploy
+          build_dir: dist
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

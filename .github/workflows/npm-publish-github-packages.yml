@@ -13,23 +13,22 @@ jobs:
     - name: Chekout code
       uses: actions/checkout@v3
 
-    - name: Install node required 
+    - name: Install node required
       uses: actions/setup-node@v3
       with:
         node-version: 16.x
-    
+
     - name: Install dependencies
       run: npm ci
 
     - name: Build dist
-      run: |
-        npm run clean
-        npm run dev
-      
+      run: npm run build
+
     - name: Deploy to GH Pages
-      uses: peaceiris/actions-gh-pages@v3
+      if: ${{ success() && github.event_name == 'push' && github.ref == 'refs/heads/master' }}
+      uses: crazy-max/ghaction-github-pages@v3
       with:
-       github_token: ${{ secrets.PORTFOLIO_SECRET }}
-       publish_dir: dist
-      
-      
+        target_branch: deploy
+        build_dir: docs
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
