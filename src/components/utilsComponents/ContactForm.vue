@@ -5,11 +5,15 @@
         <div class="close-btn" @click="$emit('closePingMeForm')">&times;</div>
         <div class="contact-form">
           <h2>Message Me</h2>
-          <form>
-            <input type="text" id="name" name="firstname" placeholder="Your name..">
-            <input type="text" id="email" name="firstname" placeholder="Your email..">
-            <textarea id="subject" name="subject" placeholder="Write something.."></textarea>
-            <input type="submit" value="Send Message">
+          <form action="" @submit.prevent="submitContactForm">
+            <input type="text" id="name" v-model="username" @click="resetSuccessMessage" name="firstname" placeholder="Your name..">
+            <p class="validation-error"  v-if="inputError.username">{{inputError.username}}</p>
+            <input type="text" id="email" @click="resetSuccessMessage" v-model="emailAddress" name="firstname" placeholder="Your email..">
+            <p class="validation-error" v-if="inputError.emailAddress">{{inputError.emailAddress}}</p>
+            <textarea id="subject" v-model="message" @click="resetSuccessMessage" name="subject" placeholder="Write something.."></textarea>
+            <p class="validation-error" v-if="inputError.message">{{inputError.message}}</p>
+            <button id="submit">Send Message</button>
+            <p class="form-success" v-if="formSuccessMessage">{{formSuccessMessage}}</p>
           </form>
         </div>
       </div>
@@ -20,6 +24,66 @@
 export default {
   name: "ContactForm",
   props: ["modeType"],
+  data() {
+    return {
+      username: "",
+      emailAddress: "",
+      message: "",
+      inputError: {
+        username: '',
+        emailAddress: '',
+        message: ''
+      },
+      formSuccessMessage: ''
+    }
+  },
+  methods: {
+    isValidEmailAddress(email) {
+      const emailRegex = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+      return emailRegex.test(email);
+
+    },
+    resetInputField() {
+      this.username = ""
+      this.emailAddress = ""
+      this.message = ""
+    },
+    resetSuccessMessage() {
+      this.formSuccessMessage = ''
+    },
+    isFormNotEmptyValidation() {
+      const errorMessage = "Fields cannot be empty !!"
+      if(!this.username) {
+        this.inputError.username = errorMessage
+        return false
+      } else {
+        this.inputError.username = null
+      }
+      if(!this.emailAddress) {
+        this.inputError.emailAddress = errorMessage
+        return false
+      } else {
+        this.inputError.emailAddress = null
+      }
+      if(!this.message) {
+        this.inputError.message = errorMessage
+        return false
+      } else {
+        this.inputError.message = null
+      }
+      return true
+    },
+    submitContactForm(){
+      if (this.isFormNotEmptyValidation()) {
+        if(!this.isValidEmailAddress(this.emailAddress)) {
+          this.inputError.emailAddress = "Your email address is invalid !!"
+        } else {
+          this.resetInputField()
+          this.formSuccessMessage = "Thanks, Your email has been sent !!!"
+        }
+      }
+    }
+  }
 };
 </script>
 
@@ -84,7 +148,7 @@ textarea {
   height: 120px;
 }
 
-input[type=submit] {
+#submit {
   background-color: #ff4539;
   color: white;
   padding: 12px 20px;
@@ -104,7 +168,7 @@ textarea:focus {
   border-radius: 5px;
   padding: 20px;
 }
-input[type=submit]:hover {
+#submit:hover {
   background-color: #000000;
 }
 
@@ -112,9 +176,19 @@ input[type=submit]:hover {
     background-color: #000;
 }
 
-.dark input[type=submit]:hover {
+.dark #submit:hover {
   background-color: #ffffff;
   color: black;
+}
+.validation-error {
+  font-size: 10px;
+  color: red;
+}
+
+.form-success {
+  padding-top: 20px;
+  font-size: 15px;
+  color: #3ca23c;
 }
 
 </style>

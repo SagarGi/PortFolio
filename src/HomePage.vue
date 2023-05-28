@@ -24,8 +24,8 @@ export default {
   name: "HomePage",
   data() {
     return {
-      modeType: "dark",
-      showModal: true,
+      modeType: "light",
+      showModal: false,
     };
   },
   components: {
