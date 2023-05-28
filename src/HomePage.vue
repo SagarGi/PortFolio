@@ -1,5 +1,10 @@
 <template>
   <div class="app" :class="modeType">
+    <ContactForm
+        v-if="showModal"
+        @closePingMeForm="closePingMeForm"
+        :modeType="modeType"
+    />
     <HeaderComponent
       :modeType="modeType"
       @changeThemeMode="changeThemeMode"
@@ -7,11 +12,6 @@
     />
     <ContentComponent :modeType="modeType" />
     <FooterComponent :modeType="modeType" />
-    <ContactForm
-      v-if="showModal"
-      :mode-type="modeType"
-      :show-modal="showModal"
-    />
   </div>
 </template>
 
@@ -24,8 +24,8 @@ export default {
   name: "HomePage",
   data() {
     return {
-      modeType: "light",
-      showModal: false,
+      modeType: "dark",
+      showModal: true,
     };
   },
   components: {
@@ -41,6 +41,9 @@ export default {
     pingMe() {
       this.showModal = true;
     },
+    closePingMeForm() {
+      this.showModal = false;
+    }
   },
 };
 </script>
@@ -49,7 +52,7 @@ export default {
 * {
   margin: 0;
   padding: 0;
-  font-family: "Roboto Slab";
+  font-family: "Roboto Slab",serif;
 }
 
 .app {
