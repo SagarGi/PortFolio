@@ -1,29 +1,37 @@
 <template>
   <header>
-    <h2>{{namePrefix}}<span id="suffix">{{nameSuffix}}</span></h2>
+    <h2>
+      {{ namePrefix }}<span id="suffix">{{ nameSuffix }}</span>
+    </h2>
     <nav>
-      <button class="ping-me" :class="modeType">Ping Me</button>
-      <span v-if="modeType === 'light'" class="theme-icon" @click="$emit('changeThemeMode')"><i class="fa fa-moon-o"></i></span>
-      <span v-else class="theme-icon" @click="$emit('changeThemeMode')"><i class="fa fa-sun-o"></i></span>
+      <button class="ping-me" @click="$emit('pingMe')" :class="modeType">Ping Me</button>
+      <span
+        v-if="modeType === 'light'"
+        class="theme-icon"
+        @click="$emit('changeThemeMode')"
+        ><i class="fa fa-moon-o"></i
+      ></span>
+      <span v-else class="theme-icon" @click="$emit('changeThemeMode')"
+        ><i class="fa fa-sun-o"></i
+      ></span>
     </nav>
   </header>
 </template>
 
 <script>
-  export default {
-    name: "HeaderComponent",
-    props: ['modeType'],
-    data() {
-      return {
-        namePrefix: "<Sagar",
-        nameSuffix: "Gi />"
-      }
-    }
-  }
+export default {
+  name: "HeaderComponent",
+  props: ["modeType"],
+  data() {
+    return {
+      namePrefix: "<Sagar",
+      nameSuffix: "Gi />",
+    };
+  },
+};
 </script>
 
 <style>
-
 header {
   margin: 0 auto;
   display: flex;
@@ -44,7 +52,7 @@ nav {
 }
 
 #suffix {
-  color: #FF4539;
+  color: #ff4539;
 }
 
 .ping-me {
@@ -55,11 +63,11 @@ nav {
   cursor: pointer;
 }
 
-.light button{
+.light button {
   background-color: white;
 }
 
-.dark button{
+.dark button {
   background-color: black;
 }
 </style>

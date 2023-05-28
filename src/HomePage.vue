@@ -1,41 +1,58 @@
 <template>
   <div class="app" :class="modeType">
-    <HeaderComponent :modeType="modeType" @changeThemeMode="changeThemeMode"/>
-    <ContentComponent :modeType="modeType"/>
-    <FooterComponent :modeType="modeType"/>
+    <ContactForm
+        v-if="showModal"
+        @closePingMeForm="closePingMeForm"
+        :modeType="modeType"
+    />
+    <HeaderComponent
+      :modeType="modeType"
+      @changeThemeMode="changeThemeMode"
+      @pingMe="pingMe"
+    />
+    <ContentComponent :modeType="modeType" />
+    <FooterComponent :modeType="modeType" />
   </div>
 </template>
 
 <script>
 import HeaderComponent from "./components/HeaderComponent.vue";
-import ContentComponent from "./components/ContentComponent.vue"
-import FooterComponent from "./components/FooterComponent.vue"
+import ContentComponent from "./components/ContentComponent.vue";
+import FooterComponent from "./components/FooterComponent.vue";
+import ContactForm from "./components/utilsComponents/ContactForm.vue";
 export default {
   name: "HomePage",
   data() {
     return {
-      modeType: "light"
-    }
+      modeType: "dark",
+      showModal: true,
+    };
   },
   components: {
     HeaderComponent,
     ContentComponent,
-    FooterComponent
+    FooterComponent,
+    ContactForm,
   },
   methods: {
     changeThemeMode() {
-      this.modeType = this.modeType === 'light' ? 'dark' : 'light'
+      this.modeType = this.modeType === "light" ? "dark" : "light";
+    },
+    pingMe() {
+      this.showModal = true;
+    },
+    closePingMeForm() {
+      this.showModal = false;
     }
-  }
-}
+  },
+};
 </script>
 
 <style>
-
 * {
   margin: 0;
   padding: 0;
-  font-family: "Roboto Slab";
+  font-family: "Roboto Slab",serif;
 }
 
 .app {
@@ -51,9 +68,8 @@ export default {
 
 /* Responsive layout - makes a one column-layout instead of two-column layout */
 @media (max-width: 800px) {
-    .app {
-        height: auto;
-    }
+  .app {
+    height: auto;
+  }
 }
-
 </style>
