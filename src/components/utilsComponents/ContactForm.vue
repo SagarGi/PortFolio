@@ -21,6 +21,7 @@
 </template>
 
 <script>
+import { Email } from '../assets/SMTP/smtp'
 export default {
   name: "ContactForm",
   props: ["modeType"],
@@ -78,10 +79,26 @@ export default {
         if(!this.isValidEmailAddress(this.emailAddress)) {
           this.inputError.emailAddress = "Your email address is invalid !!"
         } else {
-          this.resetInputField()
-          this.formSuccessMessage = "Thanks, Your email has been sent !!!"
+          this.sendEmail()
         }
       }
+    },
+    sendEmail() {
+      Email.send({
+        SecureToken : "de7731cc-0294-4bb1-a9d5-cec473b76ab7",
+        To : 'sagargurung5005@gmail.com',
+        name: this.username,
+        From : "sagargurung5005@gmail.com",
+        Subject : "Ping Me",
+        Body : this.message + "\n\n" + "Regards,\n" + this.username + "\n" + "Email: " + this.emailAddress
+      }).then((message) => {
+        if(message === 'OK') {
+          this.formSuccessMessage = "Thank you, your email has been sent !!!"
+          this.resetInputField()
+        } else {
+          this.formSuccessMessage = message
+        }
+      })
     }
   }
 };
