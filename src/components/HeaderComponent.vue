@@ -4,7 +4,9 @@
       {{ namePrefix }}<span id="suffix">{{ nameSuffix }}</span>
     </h2>
     <nav>
-      <button class="ping-me" @click="$emit('pingMe')" :class="modeType">Ping Me</button>
+      <button class="ping-me" @click="$emit('pingMe')" :class="modeType">
+        Ping Me
+      </button>
       <span
         v-if="modeType === 'light'"
         class="theme-icon"

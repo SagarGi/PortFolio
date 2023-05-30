@@ -6,10 +6,10 @@ import vue2 from "@vitejs/plugin-vue2";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/Portfolio/',
+  base: "/Portfolio/",
   build: {
     // github pages uses docs dir from the root of the repository
-    outDir: "docs"
+    outDir: "docs",
   },
   plugins: [
     vue2(),
