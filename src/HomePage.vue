@@ -1,9 +1,9 @@
 <template>
   <div class="app" :class="modeType">
     <ContactForm
-        v-if="showModal"
-        @closePingMeForm="closePingMeForm"
-        :modeType="modeType"
+      v-if="showModal"
+      @closePingMeForm="closePingMeForm"
+      :modeType="modeType"
     />
     <HeaderComponent
       :modeType="modeType"
@@ -43,7 +43,7 @@ export default {
     },
     closePingMeForm() {
       this.showModal = false;
-    }
+    },
   },
 };
 </script>
@@ -52,7 +52,7 @@ export default {
 * {
   margin: 0;
   padding: 0;
-  font-family: "Roboto Slab",serif;
+  font-family: "Roboto Slab", serif;
 }
 
 .app {
