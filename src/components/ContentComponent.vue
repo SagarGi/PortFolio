@@ -33,8 +33,10 @@
         </div>
       </div>
       <div class="thumps-up">
-        <p>1099</p>
-        <span class="give-like"><i class="fas fa-thumbs-up"></i></span>
+        <p>{{ this.likes }}</p>
+        <span class="give-like"
+          ><i class="fas fa-thumbs-up" @click="giveALike"></i
+        ></span>
       </div>
       <div class="follow-down">
         <span class="follow-down-icon"
@@ -45,9 +47,40 @@
   </div>
 </template>
 <script>
+import axios from "axios";
+
 export default {
   props: ["modeType"],
   name: "ContentComponent",
+  data() {
+    return {
+      likes: 0,
+      baseServerUrl: "http://localhost:3001",
+    };
+  },
+  async created() {
+    this.likes = await this.getLikes();
+  },
+  methods: {
+    async getLikes() {
+      try {
+        const result = await axios.get(this.baseServerUrl + "/like/get-likes");
+        return result.data.likes;
+      } catch (e) {
+        console.error(e);
+      }
+    },
+    async giveALike() {
+      try {
+        await axios.put(this.baseServerUrl + "/like/add-like", {
+          likes: this.likes,
+        });
+        this.likes++;
+      } catch (e) {
+        console.error(e);
+      }
+    },
+  },
 };
 </script>
 <style scoped>
