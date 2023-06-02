@@ -34,8 +34,8 @@
       </div>
       <div class="thumps-up">
         <p>{{ this.likes }}</p>
-        <span class="give-like"
-          ><i class="fas fa-thumbs-up" @click="giveALike"></i
+        <span class="give-like" @click="giveALike"
+          ><i class="fas fa-thumbs-up"></i
         ></span>
       </div>
       <div class="follow-down">
@@ -72,10 +72,12 @@ export default {
     },
     async giveALike() {
       try {
-        await axios.put(this.baseServerUrl + "/like/add-like", {
+        const response = await axios.put(this.baseServerUrl + "/like/add-like", {
           likes: this.likes,
         });
-        this.likes++;
+        if(response.status === 201) {
+          this.likes++;
+        }
       } catch (e) {
         console.error(e);
       }

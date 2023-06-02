@@ -25,7 +25,7 @@ export default {
   data() {
     return {
       modeType: "light",
-      showModal: false,
+      showModal: true,
     };
   },
   components: {

@@ -156,10 +156,11 @@ export default {
   left: 50%;
   transform: translate(-50%, -50%);
   background: #ffffff;
-  width: 450px;
+  width: 320px;
   z-index: 2;
   box-sizing: border-box;
-  padding: 18px 40px;
+  padding: 22px 30px;
+  border-radius: 1.5%;
 }
 
 .popup-modal .close-btn {
@@ -180,7 +181,7 @@ input[type="text"],
 select,
 textarea {
   width: 100%;
-  padding: 12px;
+  padding: 8px;
   border: 0.1px solid #9b9b9b;
   box-sizing: border-box;
   margin-top: 3px;
@@ -189,11 +190,12 @@ textarea {
   -webkit-transition: 0.5s;
   transition: 0.5s;
   outline: none;
+  font-size: 11px;
 }
 
 h2 {
   margin-bottom: 15px;
-  font-size: 22px;
+  font-size: 18px;
   text-align: center;
 }
 
@@ -204,10 +206,11 @@ textarea {
 #submit {
   background-color: #ff4539;
   color: white;
-  padding: 12px 20px;
+  padding: 8px 10px;
   border: none;
   cursor: pointer;
-  font-size: 13px;
+  font-size: 11px;
+  border-radius: 3%;
 }
 input[type="text"]:focus {
   border: 1px solid #ff4539;
@@ -219,7 +222,6 @@ textarea:focus {
 
 .contact-form {
   border-radius: 5px;
-  padding: 20px;
 }
 #submit:hover {
   background-color: #000000;
