@@ -7,7 +7,7 @@
     "dev": "vite --port 3000",
     "format": "prettier .  --write",
     "preview": "vite preview --port 4173",
-    "test:unit": "jest"
+    "test:unit": "jest --silent"
   },
   "dependencies": {
     "axios": "^1.4.0",
