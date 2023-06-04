@@ -5,7 +5,7 @@
       <div class="close-btn" @click="$emit('closePingMeForm')">&times;</div>
       <div class="contact-form">
         <h2>Message Me</h2>
-        <form action="" @submit.prevent="submitContactForm">
+        <div>
           <input
             type="text"
             id="name"
@@ -38,11 +38,11 @@
           <p class="validation-error" v-if="inputError.message">
             {{ inputError.message }}
           </p>
-          <button id="submit">Send Message</button>
+          <button id="submit" @click="submitContactForm">Send Message</button>
           <p class="form-success" v-if="formSuccessMessage">
             {{ formSuccessMessage }}
           </p>
-        </form>
+        </div>
       </div>
     </div>
   </div>
@@ -107,33 +107,36 @@ export default {
         if (!this.isValidEmailAddress(this.emailAddress)) {
           this.inputError.emailAddress = "Your email address is invalid !!";
         } else {
-          this.sendEmail();
+          if(this.isEmailSent()) {
+            this.formSuccessMessage = "Thank you, your email has been sent !!!";
+            this.resetInputField();
+          } else {
+            this.formSuccessMessage = "Sorry, email could not be sent due to some error !!";
+          }
         }
       }
     },
-    sendEmail() {
-      Email.send({
+    async isEmailSent() {
+      const response = await  Email.send({
         SecureToken: "de7731cc-0294-4bb1-a9d5-cec473b76ab7",
         To: "sagargurung5005@gmail.com",
         name: this.username,
         From: "sagargurung5005@gmail.com",
         Subject: "Ping Me",
         Body:
-          this.message +
-          "\n\n" +
-          "Regards,\n" +
-          this.username +
-          "\n" +
-          "Email: " +
-          this.emailAddress,
-      }).then((message) => {
-        if (message === "OK") {
-          this.formSuccessMessage = "Thank you, your email has been sent !!!";
-          this.resetInputField();
-        } else {
-          this.formSuccessMessage = message;
-        }
-      });
+            this.message +
+            "\n\n" +
+            "Regards,\n" +
+            this.username +
+            "\n" +
+            "Email: " +
+            this.emailAddress,
+      })
+      if(response === "OK") {
+        console.log(response)
+        return true
+      }
+      return false
     },
   },
 };
@@ -242,7 +245,7 @@ textarea:focus {
 
 .form-success {
   padding-top: 20px;
-  font-size: 15px;
+  font-size: 12px;
   color: #3ca23c;
 }
 </style>
