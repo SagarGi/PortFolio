@@ -2,7 +2,7 @@
   "name": "portfolio",
   "version": "0.0.0",
   "scripts": {
-    "build": "vite build",
+    "build": "vite build && node cname.js",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
     "dev": "vite --port 3000",
     "format": "prettier .  --write",
