@@ -16,6 +16,10 @@
       <span v-else class="theme-icon" @click="$emit('changeThemeMode')"
         ><i class="fa fa-sun-o"></i
       ></span>
+      <div class="switch-theme-pointer" v-bind:style="{ visibility: modeType === 'light' ? 'inherit' : 'hidden'}">
+        <p class="left-arrow"><<</p>
+        <p>switch theme</p>
+      </div>
     </nav>
   </header>
 </template>
@@ -45,8 +49,9 @@ header {
 
 nav {
   display: flex;
-  justify-content: space-around;
-  width: 100px;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 225px;
 }
 
 .theme-icon:hover {
@@ -65,6 +70,32 @@ nav {
   cursor: pointer;
 }
 
+.switch-theme-pointer {
+  visibility: inherit;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  height: 22px;
+  background: #ededed;
+  border-radius: 5px;
+  padding: 1px 5px;
+  -moz-animation: bounce 1.5s infinite linear;
+  -o-animation: bounce 1.5s infinite linear;
+  -webkit-animation: bounce 1.5s infinite linear;
+  animation: bounce 1.5s infinite linear;
+}
+
+.switch-theme-pointer p {
+  font-size: 11px;
+  padding-right: 3px;
+}
+
+.left-arrow {
+  padding-left: 2px;
+  padding-right: 7px;
+}
+
 .light button {
   background-color: white;
 }
@@ -72,4 +103,76 @@ nav {
 .dark button {
   background-color: black;
 }
+
+@-webkit-keyframes bounce {
+  0% {
+    left: 0;
+  }
+  50% {
+    left: -0.2em;
+  }
+  70% {
+    left: -0.3em;
+  }
+  100% {
+    left: 0;
+  }
+}
+@-moz-keyframes bounce {
+  0% {
+    left: 0;
+  }
+  50% {
+    left: -0.2em;
+  }
+  70% {
+    left: -0.3em;
+  }
+  100% {
+    left: 0;
+  }
+}
+@-o-keyframes bounce {
+  0% {
+    left: 0;
+  }
+  50% {
+    left: -0.2em;
+  }
+  70% {
+    left: -0.3em;
+  }
+  100% {
+    left: 0;
+  }
+}
+@-ms-keyframes bounce {
+  0% {
+    left: 0;
+  }
+  50% {
+    left: -0.2em;
+  }
+  70% {
+    left: -0.3em;
+  }
+  100% {
+    left: 0;
+  }
+}
+@keyframes bounce {
+  0% {
+    left: 0;
+  }
+  50% {
+    left: -0.2em;
+  }
+  70% {
+    left: -0.3em;
+  }
+  100% {
+    left: 0;
+  }
+}
+
 </style>
