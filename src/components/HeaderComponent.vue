@@ -16,7 +16,7 @@
       <span v-else class="theme-icon" @click="$emit('changeThemeMode')"
         ><i class="fa fa-sun-o"></i
       ></span>
-      <div class="switch-theme-pointer" v-bind:style="{ visibility: modeType === 'light' ? 'inherit' : 'hidden'}">
+      <div class="switch-theme-pointer" :class="modeType"">
         <p class="left-arrow"><<</p>
         <p>switch theme</p>
       </div>
@@ -45,6 +45,11 @@ header {
   align-items: center;
   height: 15vh;
   width: 85%;
+}
+
+header h2 {
+  font-size: 25px;
+  padding-top: 15px;
 }
 
 nav {
