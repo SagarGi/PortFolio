@@ -48,7 +48,7 @@ header {
 }
 
 header h2 {
-  font-size: 25px;
+  font-size: 17px;
   padding-top: 15px;
 }
 
